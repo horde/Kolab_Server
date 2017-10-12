@@ -8,7 +8,6 @@
  * @package  Kolab_Test
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Share
  */
 
 /**
@@ -23,7 +22,6 @@
  * @package  Kolab_Test
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Share
  */
 class Horde_Kolab_Server_Integration_Scenario extends PHPUnit_Extensions_Story_TestCase
 {
