@@ -8,7 +8,6 @@
  * @package  Kolab_Server
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Server
  */
 
 /**
@@ -24,7 +23,6 @@
  * @package  Kolab_Server
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Server
  */
 abstract class Horde_Kolab_Server_Ldap
 implements Horde_Kolab_Server_Interface

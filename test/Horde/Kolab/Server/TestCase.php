@@ -8,7 +8,6 @@
  * @package  Kolab_Server
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Server
  */
 
 /**
@@ -33,7 +32,6 @@ require_once __DIR__ . '/Constraints/Searchalias.php';
  * @package  Kolab_Server
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Server
  */
 class Horde_Kolab_Server_TestCase extends PHPUnit_Framework_TestCase
 {
