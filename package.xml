@@ -34,7 +34,7 @@
        <dir name="examples">
         <file name="server.php" role="doc" />
        </dir> <!-- /doc/Horde/Kolab/Server/examples -->
-       <file name="TODO" role="doc" />
+       <file name="TODO.rst" role="doc" />
        <file name="usage.txt" role="doc" />
       </dir> <!-- /doc/Horde/Kolab/Server -->
      </dir> <!-- /doc/Horde/Kolab -->
@@ -377,7 +377,7 @@
  <phprelease>
   <filelist>
    <install as="examples/server.php" name="doc/Horde/Kolab/Server/examples/server.php" />
-   <install as="TODO" name="doc/Horde/Kolab/Server/TODO" />
+   <install as="TODO.rst" name="doc/Horde/Kolab/Server/TODO.rst" />
    <install as="usage.txt" name="doc/Horde/Kolab/Server/usage.txt" />
    <install as="Horde/Kolab/Server/Composite.php" name="lib/Horde/Kolab/Server/Composite.php" />
    <install as="Horde/Kolab/Server/Connection/File.php" name="lib/Horde/Kolab/Server/Connection/File.php" />
