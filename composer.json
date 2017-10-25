@@ -1,5 +1,5 @@
 {
-    "name": "horde/horde-kolab-server",
+    "name": "horde/kolab-server",
     "description": "A package for manipulating the Kolab user database",
     "type": "library",
     "homepage": "https://pear.horde.org",
@@ -12,7 +12,7 @@
         }
     ],
     "version": "2.0.6",
-    "time": "2016-02-01",
+    "time": "2017-10-20",
     "repositories": [
         {
             "type": "pear",
@@ -21,15 +21,15 @@
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Auth": "^2@stable",
-        "pear-pear.horde.org/Horde_Exception": "^2@stable",
-        "pear-pear.horde.org/Horde_Util": "^2@stable",
+        "pear-pear.horde.org/Horde_Auth": "^2",
+        "pear-pear.horde.org/Horde_Exception": "^2",
+        "pear-pear.horde.org/Horde_Util": "^2",
         "ext-hash": "*"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Date": "^2@stable",
-        "pear-pear.horde.org/Horde_Ldap": "^2@stable",
-        "pear-pear.horde.org/Horde_Test": "^2.4@stable",
+        "pear-pear.horde.org/Horde_Date": "^2",
+        "pear-pear.horde.org/Horde_Ldap": "^2",
+        "pear-pear.horde.org/Horde_Test": "^2.4",
         "ext-ldap": "*"
     },
     "replace": {
