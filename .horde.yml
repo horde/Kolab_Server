@@ -7,3 +7,36 @@ description: |
   database stored in LDAP.
 list: dev
 type: library
+homepage: https://www.horde.org/libraries/Horde_Kolab_Server
+authors:
+  -
+    name: Gunnar Wrobel
+    user: wrobel
+    email: p@rdus.de
+    active: true
+    role: lead
+version:
+  release: 2.0.6
+  api: 1.0.0
+state:
+  release: stable
+  api: stable
+license:
+  identifier: LGPL-2.1
+  uri: http://www.horde.org/licenses/lgpl21
+dependencies:
+  required:
+    php: ^5.3 || ^7
+    pear:
+      pear.horde.org/Horde_Auth: ^2
+      pear.horde.org/Horde_Exception: ^2
+      pear.horde.org/Horde_Util: ^2
+    ext:
+      hash: '*'
+  optional:
+    pear:
+      pear.horde.org/Horde_Date: ^2
+      pear.horde.org/Horde_Ldap: ^2
+      pear.horde.org/Horde_Test: ^2.4
+    ext:
+      ldap: '*'
