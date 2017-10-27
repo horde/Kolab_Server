@@ -12,7 +12,7 @@
   <email>p@rdus.de</email>
   <active>yes</active>
  </lead>
- <date>2017-10-20</date>
+ <date>2017-10-27</date>
  <version>
   <release>2.0.6</release>
   <api>1.0.0</api>
@@ -33,6 +33,7 @@
        <dir name="examples">
         <file name="server.php" role="doc" />
        </dir> <!-- /doc/Horde/Kolab/Server/examples -->
+       <file name="CHANGES" role="doc" />
        <file name="TODO.rst" role="doc" />
        <file name="usage.txt" role="doc" />
       </dir> <!-- /doc/Horde/Kolab/Server -->
@@ -374,6 +375,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Kolab/Server/CHANGES" />
    <install as="examples/server.php" name="doc/Horde/Kolab/Server/examples/server.php" />
    <install as="TODO.rst" name="doc/Horde/Kolab/Server/TODO.rst" />
    <install as="usage.txt" name="doc/Horde/Kolab/Server/usage.txt" />
@@ -903,7 +905,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-20</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
    </notes>
