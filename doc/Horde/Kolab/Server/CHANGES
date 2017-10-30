@@ -1,0 +1,195 @@
+----------
+v2.0.6-git
+----------
+
+
+------
+v2.0.5
+------
+
+[jan] Mark PHP 7 as supported.
+
+
+------
+v2.0.4
+------
+
+[jan] Fix issues with certain locales like Turkish.
+
+
+------
+v2.0.3
+------
+
+[jan] Improve PSR-2 compatibility.
+[jan] Remove PHPUnit dependency.
+
+
+------
+v2.0.2
+------
+
+[jan] Improve unit tests.
+
+
+------
+v2.0.1
+------
+
+[mms] Use new Horde_Test layout.
+
+
+------
+v2.0.0
+------
+
+First stable release for Horde 5.
+
+
+---------
+v2.0.0RC1
+---------
+
+[jan] Reduce logging level of debug messages.
+
+
+-----------
+v2.0.0beta1
+-----------
+
+First beta release for Horde 5.
+
+
+------------
+v2.0.0alpha1
+------------
+
+First alpha release for Horde 5.
+
+
+------
+v1.0.2
+------
+
+[rla] Add license file.
+[jan] Fix tests to work with PHPUnit 3.6.
+
+
+------
+v1.0.1
+------
+
+[gwr] Fix reading the user name.
+
+
+------
+v1.0.0
+------
+
+First stable release for Horde 4.
+[jan] Use Horde_Auth for generating password hashes.
+
+
+---------
+v1.0.0RC2
+---------
+
+Second release candidate for Horde 4.
+
+
+---------
+v1.0.0RC1
+---------
+
+First release candidate for Horde 4.
+
+
+-----------
+v1.0.0beta1
+-----------
+
+First beta release for Horde 4.
+
+
+------------
+v1.0.0alpha1
+------------
+
+First alpha release for Horde 4.
+
+
+------
+v0.8.0
+------
+
+Converted the package to Horde 4 / PHP 5.
+Split the session driver into a separate package (Kolab_Session).
+Use exceptions rather than PEAR errors.
+Schema support.
+Use class variables to represent objectClass attributes. Thus it is possible to
+      accomodate for variable attribute names.
+Cleaner class structure that matches the objectClass structure and also allows
+      one to represent logical classes.
+Separate classes to handle the LDAP tree structure in a more flexible way.
+Added LDAP write support.
+Real LDAP server unit testing.
+Support configurable attribute mapping.
+Added getGroupAddresses() to return the mail addresses of groups the user
+      belongs to.
+
+
+------
+v0.4.0
+------
+
+Fixed objectClass evaluation to respect case-insensitivity (Bug: #7694)
+kolab/issue2207 (Make it possible to enable and disable users to be able to use
+      the webclient)
+Added fullname attribute as support for kolab/issue2546 (Horde should use name
+      and email from ldap as defaults)
+Fixed initialization of parameters retrieved from LDAP.
+Fixed addrsForIdOrMail to return only lowercased mail addresses
+      (kolab/issue3426, https://www.intevation.de/roundup/kolab/issue3426)
+Fixed testing problems with the test IMAP driver.
+Fixed notices when retrieving LDAP attributes.
+
+
+------
+v0.3.0
+------
+
+Fixed the fallback for a missing freebusy_server value.
+Fixed identification of external addresses.
+
+
+------
+v0.2.0
+------
+
+Fixed retrieval of the users IMAP home server.
+Allowed retrieving a DN for an id matching either mail, uid or alias. (Kolab
+      issue 2587, https://www.intevation.de/roundup/kolab/issue2587)
+Moved Kolab session handler from Kolab_Storage to Kolab_Server.
+Enabled retrieval of the users free/busy server. (Enhancement: #6699)
+Added capability to list objects.
+Added write capabilities to the package.
+Moved the IMAP drivers from Kolab_Storage to Kolab_Server as the IMAP
+      connection must be handled by the Kolab session.
+Added a test class for simplified PHPUnit testing.
+
+
+------
+v0.1.0
+------
+
+Initial release.
+
+
+------
+v0.1.1
+------
+
+Renamed package to Kolab_Server.
+Removed an unnecessary translation.
+Added dnForMailOrAlias function to Horde_Kolab_Server.
+Fixed experimental KOLAB_ATTR_IMAPHOST attribute.
