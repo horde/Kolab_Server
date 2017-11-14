@@ -3,16 +3,15 @@
  <name>Horde_Kolab_Server</name>
  <channel>pear.horde.org</channel>
  <extends>Kolab_Server</extends>
- <summary>A package for manipulating the Kolab user database</summary>
- <description>This package reads/writes entries in the Kolab user
- database stored in LDAP.</description>
+ <summary>Kolab user database library</summary>
+ <description>This package reads/writes entries in the Kolab user database stored in LDAP.</description>
  <lead>
   <name>Gunnar Wrobel</name>
   <user>wrobel</user>
   <email>p@rdus.de</email>
   <active>yes</active>
  </lead>
- <date>2017-10-30</date>
+ <date>2017-11-14</date>
  <version>
   <release>2.0.6</release>
   <api>1.0.0</api>
@@ -908,7 +907,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-30</date>
+   <date>2017-11-14</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
