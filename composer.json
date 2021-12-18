@@ -3,7 +3,7 @@
     "description": "Kolab user database library",
     "type": "horde-library",
     "homepage": "https://www.horde.org/libraries/Horde_Kolab_Server",
-    "license": "LGPL-2.1",
+    "license": "LGPL-2.1-only",
     "authors": [
         {
             "name": "Gunnar Wrobel",
@@ -11,7 +11,7 @@
             "role": "lead"
         }
     ],
-    "version": "2.0.6",
+    
     "time": "2020-10-27",
     "repositories": [
         {
@@ -20,17 +20,17 @@
         }
     ],
     "require": {
-        "horde/horde-installer-plugin": "dev-master",
-        "php": "^5.3 || ^7",
-        "horde/auth": "dev-master",
-        "horde/exception": "dev-master",
-        "horde/util": "dev-master",
+        "horde/horde-installer-plugin": "^2 || dev-FRAMEWORK_6_0",
+        "php": "^7.4 || ^8",
+        "horde/auth": "^3 || dev-FRAMEWORK_6_0",
+        "horde/exception": "^3 || dev-FRAMEWORK_6_0",
+        "horde/util": "^3 || dev-FRAMEWORK_6_0",
         "ext-hash": "*"
     },
     "suggest": {
-        "horde/date": "^2",
-        "horde/ldap": "^2",
-        "horde/test": "^2.4",
+        "horde/date": "^3",
+        "horde/ldap": "^3",
+        "horde/test": "^3",
         "ext-ldap": "*"
     },
     "autoload": {
