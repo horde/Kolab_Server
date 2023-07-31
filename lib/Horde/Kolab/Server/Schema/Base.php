@@ -64,7 +64,7 @@ implements Horde_Kolab_Server_Schema_Interface
             $this->_handleError($info, Horde_Kolab_Server_Exception::SYSTEM);
             return $info;
         }
-        return parent::getObjectclassSchema($objectclass);
+        return array();
     }
 
     /**
@@ -84,7 +84,7 @@ implements Horde_Kolab_Server_Schema_Interface
             $this->_handleError($info, Horde_Kolab_Server_Exception::SYSTEM);
             return $info;
         }
-        return parent::getAttributeSchema($attribute);
+        return array();
     }
 
     /**
