@@ -23,6 +23,7 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
+#[\AllowDynamicProperties]
 class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends Horde_Test_Case
 {
     public function setUp(): void

@@ -31,6 +31,7 @@ require_once __DIR__ . '/../../LdapTestCase.php';
 
 use PHPUnit\Framework\Constraint\IsInstanceOf;
 
+#[\AllowDynamicProperties]
 class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTestCase
 {
     public function setUp(): void

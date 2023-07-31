@@ -28,6 +28,7 @@ require_once __DIR__ . '/../../../../TestCase.php';
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
+#[\AllowDynamicProperties]
 class Horde_Kolab_Server_Class_Server_Search_Operation_RestrictgroupsTest
 extends Horde_Kolab_Server_TestCase
 {
