@@ -2,7 +2,7 @@
 
 class Horde_Kolab_Server_Constraint_Searchuid extends PHPUnit\Framework\Constraint\Constraint
 {
-    public function evaluate($other, $description = '', $returnResult = FALSE)
+    public function evaluate($other, $description = '', $returnResult = FALSE): ?bool
     {
         if ($other instanceof Horde_Kolab_Server_Query_Element_Interface) {
             if ($other instanceof Horde_Kolab_Server_Query_Element_Group) {
