@@ -31,7 +31,7 @@ require_once __DIR__ . '/../LdapTestCase.php';
 class Horde_Kolab_Server_Integration_SearchguidforuidormailTest
 extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->skipIfNoLdap();
         $connection = new Horde_Kolab_Server_Connection_Mock(
@@ -65,6 +65,8 @@ extends Horde_Kolab_Server_LdapTestCase
 
     public function testSearchingForUnknownUserReturnsEmptyGuid()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->composite->search->searchGuidForUidOrMail('unknown');
     }
 

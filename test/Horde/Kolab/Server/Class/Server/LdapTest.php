@@ -28,14 +28,17 @@ require_once __DIR__ . '/../../LdapTestCase.php';
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
+
+use PHPUnit\Framework\Constraint\IsInstanceOf;
+
 class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->skipIfNoLdap();
 
-        $this->ldap_read  = $this->getMock('Horde_Ldap');
-        $this->ldap_write = $this->getMock('Horde_Ldap');
+        $this->ldap_read  = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $this->ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $connection = new Horde_Kolab_Server_Connection_Splittedldap(
             $this->ldap_read,
             $this->ldap_write
@@ -49,9 +52,10 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     private function getSearchResultMock()
     {
-        $result = $this->getMock(
-            'Horde_Ldap_Search', array('asArray', 'count'), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('asArray', 'count'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $result->expects($this->any())
             ->method('asArray')
             ->will($this->returnValue(array(array('dn' => 'test'))));
@@ -68,11 +72,15 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodConnectguidHasStringParameterGuid()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->server->connectGuid('guid', '');
     }
 
     public function testMethodConnectguidHasStringParameterPass()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->server->connectGuid('', 'pass');
     }
 
@@ -161,9 +169,10 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodReadThrowsExceptionIfTheObjectWasNotFound()
     {
-        $result = $this->getMock(
-            'Horde_Ldap_Search', array('asArray', 'count'), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('asArray', 'count'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $result->expects($this->exactly(1))
             ->method('count')
             ->will($this->returnValue(0));
@@ -208,9 +217,10 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodReadAttributesThrowsExceptionIfTheObjectWasNotFound()
     {
-        $result = $this->getMock(
-            'Horde_Ldap_Search', array('asArray', 'count'), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('asArray', 'count'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $result->expects($this->exactly(1))
             ->method('count')
             ->will($this->returnValue(0));
@@ -273,16 +283,16 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodSaveHasParameterObjectTheObjectToModifyOnTheServer()
     {
-        $entry = $this->getMock(
-            'Horde_Ldap_Entry', array(), array(), '', false
-        );
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $entry = $this->getMockBuilder('Horde_Ldap_Entry')
+                      ->disableOriginalConstructor()
+                      ->getMock();
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('getEntry')
             ->will($this->returnValue($entry));
         $this->ldap_write->expects($this->exactly(1))
             ->method('modify')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $object->expects($this->exactly(1))
             ->method('readInternal')
             ->will($this->returnValue(array()));
@@ -291,16 +301,16 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodSaveHasParameterArrayData()
     {
-        $entry = $this->getMock(
-            'Horde_Ldap_Entry', array(), array(), '', false
-        );
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $entry = $this->getMockBuilder('Horde_Ldap_Entry')
+                      ->disableOriginalConstructor()
+                      ->getMock();
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('getEntry')
             ->will($this->returnValue($entry));
         $this->ldap_write->expects($this->exactly(1))
             ->method('modify')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $object->expects($this->exactly(1))
             ->method('readInternal')
             ->will($this->returnValue(array()));
@@ -309,16 +319,16 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodSaveHasPostconditionThatTheEntryWasModified()
     {
-        $entry = $this->getMock(
-            'Horde_Ldap_Entry', array(), array(), '', false
-        );
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $entry = $this->getMockBuilder('Horde_Ldap_Entry')
+                      ->disableOriginalConstructor()
+                      ->getMock();
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('getEntry')
             ->will($this->returnValue($entry));
         $this->ldap_write->expects($this->exactly(1))
             ->method('modify')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $object->expects($this->exactly(1))
             ->method('readInternal')
             ->will($this->returnValue(array()));
@@ -327,7 +337,7 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodSaveThrowsExceptionIfSavingDataFailed()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('modify')
             ->will($this->throwException(new Horde_Ldap_Exception('Saving failed!')));
@@ -345,34 +355,34 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
     public function testMethodAddHasParameterObjectTheObjectToAddToTheServer()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('add')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $this->server->add($object, array('attributes' => array('dn')));
     }
 
     public function testMethodAddHasParameterArrayData()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('add')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $this->server->add($object, array('dn' => 'test'));
     }
 
     public function testMethodAddHasPostconditionThatTheEntryWasModified()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('add')
-            ->with(new PHPUnit_Framework_Constraint_IsInstanceOf('Horde_Ldap_Entry'));
+            ->with(new IsInstanceOf('Horde_Ldap_Entry'));
         $this->server->add($object, array('dn' => 'test'));
     }
 
     public function testMethodAddThrowsExceptionIfSavingDataFailed()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->ldap_write->expects($this->exactly(1))
             ->method('add')
             ->will($this->throwException(new Horde_Ldap_Exception('Saving failed!')));
@@ -487,7 +497,7 @@ class Horde_Kolab_Server_Class_Server_LdapTest extends Horde_Kolab_Server_LdapTe
 
 /*     public function testMethodSearchReturnsArrayMappedSearchResultIfMappingIsActivated() */
 /*     { */
-/*         $ldap = $this->getMock('Horde_Ldap', array('search')); */
+/*         $ldap = $this->getMockBuilder('Horde_Ldap', array('search'))->getMock(); */
 /*         $ldap->expects($this->exactly(1)) */
 /*             ->method('search') */
 /*             ->will($this->returnValue(new Search_Mock(array(array('dn2' => 'test'))))); */

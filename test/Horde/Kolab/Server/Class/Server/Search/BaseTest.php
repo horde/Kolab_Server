@@ -68,7 +68,7 @@ extends Horde_Kolab_Server_TestCase
         try {
             $search->setComposite($composite);
         } catch (Horde_Kolab_Server_Exception $e) {
-            $this->assertContains(
+            $this->assertStringContainsString(
                 'getSearchOperations specified non-existing class "Object_Search_NoSuchClass"!',
                 $e->getMessage()
             );
@@ -115,14 +115,14 @@ extends Horde_Kolab_Server_TestCase
             $search->search();
             $this->fail('No exception!');
         } catch (Horde_Kolab_Server_Exception $e) {
-            $this->assertContains(
+            $this->assertStringContainsString(
                 'does not support method "search"',
                 $e->getMessage()
             );
         }
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Object_Search::reset();
     }

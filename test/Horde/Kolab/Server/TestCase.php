@@ -33,23 +33,29 @@ require_once __DIR__ . '/Constraints/Searchalias.php';
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_TestCase extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_TestCase extends Horde_Test_Case
 {
     protected function getComposite()
     {
-        return $this->getMock(
-            'Horde_Kolab_Server_Composite', array(), array(), '', false, false
-        );
+        return $this->getMockBuilder('Horde_Kolab_Server_Composite')
+                    ->disableOriginalConstructor()
+                    ->disableOriginalClone()
+                    ->getMock();
     }
 
     protected function getMockedComposite()
     {
         return new Horde_Kolab_Server_Composite(
-            $this->getMock('Horde_Kolab_Server_Interface'),
-            $this->getMock('Horde_Kolab_Server_Objects_Interface'),
-            $this->getMock('Horde_Kolab_Server_Structure_Interface'),
-            $this->getMock('Horde_Kolab_Server_Search_Interface'),
-            $this->getMock('Horde_Kolab_Server_Schema_Interface')
+            $this->getMockBuilder('Horde_Kolab_Server_Interface')
+                 ->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Objects_Interface')
+                 ->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Structure_Interface')
+                 ->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Search_Interface')
+                 ->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Schema_Interface')
+                 ->getMock()
         );
     }
 

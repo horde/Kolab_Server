@@ -23,13 +23,13 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_Class_Server_Query_ElementTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $this->writer = $this->getMock(
-            'Horde_Kolab_Server_Query_Ldap', array(), array(), '', false
-        );
+        $this->writer = $this->getMockBuilder('Horde_Kolab_Server_Query_Ldap')
+                             ->disableOriginalConstructor()
+                             ->getMock();
     }
 
     public function testClassAndMethodConvertHasResultMixedTheConvertedElement()
@@ -108,7 +108,7 @@ class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framewor
     {
         $less = new Horde_Kolab_Server_Query_Element_Less('', '');
         $not = new Horde_Kolab_Server_Query_Element_Not($less);
-        $this->assertInternalType('array', $not->getElements());
+        $this->assertIsArray($not->getElements());
     }
 
     public function testClassNotMethodConvertHasResultMixedTheConvertedElement()
@@ -132,6 +132,8 @@ class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framewor
 
     public function testClassGroupMethodConstructHasParameterArrayElements()
     {
+        $this->expectNotToPerformAssertions();
+
         $or = new Horde_Kolab_Server_Query_Element_Or(array());
     }
 
@@ -141,20 +143,18 @@ class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framewor
         $this->assertEquals(array(), $or->getElements());
     }
 
-    /**
-     * @expectedException Horde_Kolab_Server_Exception
-     */
     public function testClassGroupMethodGetnameThrowsException()
     {
+        $this->expectException('Horde_Kolab_Server_Exception');
+
         $or = new Horde_Kolab_Server_Query_Element_Or(array());
         $or->getName();
     }
 
-    /**
-     * @expectedException Horde_Kolab_Server_Exception
-     */
     public function testClassGroupMethodGetvalueThrowsException()
     {
+        $this->expectException('Horde_Kolab_Server_Exception');
+
         $or = new Horde_Kolab_Server_Query_Element_Or(array());
         $or->getValue();
     }
@@ -167,11 +167,15 @@ class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framewor
 
     public function testClassSingleMethodConstructHasParameterStringName()
     {
+        $this->expectNotToPerformAssertions();
+
         $equals = new Horde_Kolab_Server_Query_Element_Equals('name', '');
     }
 
     public function testClassSingleMethodConstructHasParameterStringValue()
     {
+        $this->expectNotToPerformAssertions();
+
         $equals = new Horde_Kolab_Server_Query_Element_Equals('', 'value');
     }
 
@@ -194,11 +198,10 @@ class Horde_Kolab_Server_Class_Server_Query_ElementTest extends PHPUnit_Framewor
         $this->assertEquals('value', $equals->getValue());
     }
 
-    /**
-     * @expectedException Horde_Kolab_Server_Exception
-     */
     public function testClassSingleMethodGetelementsThrowsException()
     {
+        $this->expectException('Horde_Kolab_Server_Exception');
+
         $equals = new Horde_Kolab_Server_Query_Element_Equals('', '');
         $equals->getElements();
     }

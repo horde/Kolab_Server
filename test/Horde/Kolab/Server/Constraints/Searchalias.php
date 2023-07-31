@@ -1,6 +1,6 @@
 <?php
 
-class Horde_Kolab_Server_Constraint_Searchalias extends PHPUnit_Framework_Constraint
+class Horde_Kolab_Server_Constraint_Searchalias extends PHPUnit\Framework\Constraint\Constraint
 {
     public function evaluate($other, $description = '', $returnResult = FALSE)
     {
@@ -25,7 +25,7 @@ class Horde_Kolab_Server_Constraint_Searchalias extends PHPUnit_Framework_Constr
         }
     }
 
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $comparisonFailure = NULL)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $comparisonFailure = NULL): void
     {
         throw new PHPUnit_Framework_ExpectationFailedException(
           sprintf(
@@ -38,7 +38,7 @@ class Horde_Kolab_Server_Constraint_Searchalias extends PHPUnit_Framework_Constr
         );
     }
 
-    public function toString()
+    public function toString(): string
     {
         return 'contains a query element that is searching by alias';
     }

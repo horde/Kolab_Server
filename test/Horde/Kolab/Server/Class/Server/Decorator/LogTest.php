@@ -23,14 +23,14 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->logger = $this->getMock('Horde_Log_Logger');
-        $this->server = $this->getMock('Horde_Kolab_Server_Interface');
+        $this->logger = $this->getMockBuilder('Horde_Log_Logger')->getMock();
+        $this->server = $this->getMockBuilder('Horde_Kolab_Server_Interface')->getMock();
         $this->logged = new Horde_Kolab_Server_Decorator_Log(
             $this->server, $this->logger
         );
@@ -82,10 +82,11 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodFindHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
-        $query = $this->getMock(
-            'Horde_Kolab_Server_Query_Ldap', array(), array(), '', false, false
-        );
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Ldap')
+                      ->disableOriginalConstructor()
+                      ->disableOriginalClone()
+                      ->getMock();
         $query->expects($this->once())
             ->method('__toString')
             ->will($this->returnValue('filter'));
@@ -101,10 +102,11 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodFindbelowHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
-        $query = $this->getMock(
-            'Horde_Kolab_Server_Query_Element_Interface', array(), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')
+                      ->disableOriginalConstructor()
+                      ->disableOriginalClone()
+                      ->getMock();
         $this->server->expects($this->exactly(1))
             ->method('findBelow')
             ->with($query, 'none')
@@ -117,7 +119,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodSaveHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->server->expects($this->exactly(1))
             ->method('save')
             ->with($object, array('a' => 'a'));
@@ -126,7 +128,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodAddHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->server->expects($this->exactly(1))
             ->method('add')
             ->with($object, array('a' => 'a'));
@@ -158,7 +160,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodSaveHasPostconditionThatTheEventWasLogged()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $object->expects($this->once())
             ->method('getGuid')
             ->will($this->returnValue('a'));
@@ -172,7 +174,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_LogTest extends PHPUnit_Framewor
 
     public function testMethodAddHasPostconditionThatTheEventWasLogged()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $object->expects($this->once())
             ->method('getGuid')
             ->will($this->returnValue('a'));

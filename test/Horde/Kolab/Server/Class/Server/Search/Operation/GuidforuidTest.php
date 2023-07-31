@@ -31,14 +31,14 @@ require_once __DIR__ . '/../../../../TestCase.php';
 class Horde_Kolab_Server_Class_Server_Search_Operation_GuidforuidTest
 extends Horde_Kolab_Server_TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $this->structure = $this->getMock('Horde_Kolab_Server_Structure_Interface');
+        $this->structure = $this->getMockBuilder('Horde_Kolab_Server_Structure_Interface')->getMock();
     }
 
     public function testMethodRestrictkolabHasResultRestrictedToKolabUsers()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
         $result->expects($this->once())
             ->method('asArray')
             ->will($this->returnValue(array('a' => 'a')));
@@ -53,7 +53,7 @@ extends Horde_Kolab_Server_TestCase
             )
             ->will($this->returnValue($result));
         $search = new Horde_Kolab_Server_Search_Operation_Guidforuid($this->structure);
-        $criteria = $this->getMock('Horde_Kolab_Server_Query_Element_Interface');
+        $criteria = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock();
         $this->assertEquals(array('a'), $search->searchGuidForUid('test'));
     }
 }

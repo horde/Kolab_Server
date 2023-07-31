@@ -24,20 +24,21 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 class Horde_Kolab_Server_Class_Server_Query_Element_MappedTest
-extends PHPUnit_Framework_TestCase
+extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $this->element = $this->getMock(
-            'Horde_Kolab_Server_Query_Element_Interface'
-        );
-        $this->mapper  = $this->getMock(
-            'Horde_Kolab_Server_Decorator_Map', array(), array(), '', false, false
-        );
+        $this->element = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock();
+        $this->mapper  = $this->getMockBuilder('Horde_Kolab_Server_Decorator_Map')
+                              ->disableOriginalConstructor()
+                              ->disableOriginalClone()
+                              ->getMock();
     }
 
     public function testMethodConstructHasParameterElementTheDecoratedElement()
     {
+        $this->expectNotToPerformAssertions();
+
         $element = new Horde_Kolab_Server_Query_Element_Mapped(
             $this->element,
             $this->mapper
@@ -46,6 +47,8 @@ extends PHPUnit_Framework_TestCase
 
     public function testMethodConstructHasParameterMapper()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->testMethodConstructHasParameterElementTheDecoratedElement();
     }
 
@@ -80,12 +83,8 @@ extends PHPUnit_Framework_TestCase
     public function testMethodGetelementsHasResultArrayOfMappedElements()
     {
         $elements = array(
-            $this->getMock(
-                'Horde_Kolab_Server_Query_Element_Interface'
-            ),
-            $this->getMock(
-                'Horde_Kolab_Server_Query_Element_Interface'
-            ),
+            $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock(),
         );
         $this->element->expects($this->once())
             ->method('getElements')
@@ -111,7 +110,7 @@ extends PHPUnit_Framework_TestCase
             $this->element,
             $this->mapper
         );
-        $query = $this->getMock('Horde_Kolab_Server_Query_Interface');
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Interface')->getMock();
         $this->assertEquals('test', $element->convert($query));
     }
 
@@ -158,7 +157,7 @@ extends PHPUnit_Framework_TestCase
             $this->element,
             $this->mapper
         );
-        $query = $this->getMock('Horde_Kolab_Server_Query_Interface');
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Interface')->getMock();
         $element->convert($query);
     }
 }

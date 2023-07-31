@@ -1,6 +1,6 @@
 <?php
 
-class Horde_Kolab_Server_Constraint_Restrictedkolabusers extends PHPUnit_Framework_Constraint
+class Horde_Kolab_Server_Constraint_Restrictedkolabusers extends PHPUnit\Framework\Constraint\Constraint
 {
     public function evaluate($other, $description = '', $returnResult = FALSE)
     {
@@ -26,7 +26,7 @@ class Horde_Kolab_Server_Constraint_Restrictedkolabusers extends PHPUnit_Framewo
         }
     }
 
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $comparisonFailure = NULL)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $comparisonFailure = NULL): void
     {
         throw new PHPUnit_Framework_ExpectationFailedException(
           sprintf(
@@ -39,7 +39,7 @@ class Horde_Kolab_Server_Constraint_Restrictedkolabusers extends PHPUnit_Framewo
         );
     }
 
-    public function toString()
+    public function toString(): string
     {
         return 'contains a query element that restricts the search to Kolab users';
     }

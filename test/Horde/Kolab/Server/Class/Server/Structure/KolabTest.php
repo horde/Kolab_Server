@@ -23,23 +23,23 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Class_Server_Structure_KolabTest extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_Class_Server_Structure_KolabTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $server = $this->getMock('Horde_Kolab_Server_Interface');
+        $server = $this->getMockBuilder('Horde_Kolab_Server_Interface')->getMock();
         $this->composite = new Horde_Kolab_Server_Composite(
             $server,
-            $this->getMock('Horde_Kolab_Server_Objects_Interface'),
+            $this->getMockBuilder('Horde_Kolab_Server_Objects_Interface')->getMock(),
             new Horde_Kolab_Server_Structure_Kolab(),
-            $this->getMock('Horde_Kolab_Server_Search_Interface'),
-            $this->getMock('Horde_Kolab_Server_Schema_Interface')
+            $this->getMockBuilder('Horde_Kolab_Server_Search_Interface')->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Schema_Interface')->getMock()
         );
     }
 
     public function testMethodGetsupportedobjectsHasResultArrayTheObjectTypesSupportedByThisStructure()
     {
-        $this->assertInternalType('array', $this->composite->structure->getSupportedObjects());
+        $this->assertIsArray($this->composite->structure->getSupportedObjects());
     }
 
     public function testMethodDeterminetypeHasResultStringTheObjectclassOfTheGivenGuid1()

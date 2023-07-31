@@ -64,7 +64,7 @@ class Horde_Kolab_Server_Integration_InetorgpersonTest extends Horde_Kolab_Serve
      *
      * @return NULL
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

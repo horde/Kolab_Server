@@ -30,12 +30,12 @@ require_once __DIR__ . '/../../../LdapTestCase.php';
  */
 class Horde_Kolab_Server_Class_Server_Ldap_StandardTest extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->skipIfNoLdap();
 
-        $this->ldap_read  = $this->getMock('Horde_Ldap');
-        $this->ldap_write = $this->getMock('Horde_Ldap');
+        $this->ldap_read  = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $this->ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $connection = new Horde_Kolab_Server_Connection_Splittedldap(
             $this->ldap_read,
             $this->ldap_write
@@ -49,9 +49,10 @@ class Horde_Kolab_Server_Class_Server_Ldap_StandardTest extends Horde_Kolab_Serv
 
     private function getSearchResultMock()
     {
-        $result = $this->getMock(
-            'Horde_Ldap_Search', array('asArray', 'count'), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('asArray', 'count'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $result->expects($this->any())
             ->method('asArray')
             ->will($this->returnValue(array(array('dn' => 'test'))));

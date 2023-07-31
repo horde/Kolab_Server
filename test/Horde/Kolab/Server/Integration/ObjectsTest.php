@@ -23,9 +23,9 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Integration_ObjectsTest extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_Integration_ObjectsTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->markTestIncomplete('Needs to be fixed');
     }

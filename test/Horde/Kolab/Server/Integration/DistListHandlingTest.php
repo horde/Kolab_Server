@@ -30,6 +30,10 @@ require_once __DIR__ . '/Scenario.php';
  */
 class Horde_Kolab_Server_Integration_DistListHandlingTest extends Horde_Kolab_Server_Integration_Scenario
 {
+    public function testNothing()
+    {
+        $this->expectNotToPerformAssertions();
+    }
 
     /**
      * Test adding a distribution list.

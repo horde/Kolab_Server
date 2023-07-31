@@ -75,7 +75,7 @@ class Horde_Kolab_Server_Integration_MockTest extends Horde_Kolab_Server_Integra
      *
      * @return NULL
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

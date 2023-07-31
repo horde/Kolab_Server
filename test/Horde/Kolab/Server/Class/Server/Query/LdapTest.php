@@ -30,16 +30,16 @@ require_once __DIR__ . '/../../../LdapTestCase.php';
  */
 class Horde_Kolab_Server_Class_Server_Query_LdapTest extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->skipIfNoLdap();
-        $this->structure = $this->getMock(
-            'Horde_Kolab_Server_Structure_Interface'
-        );
+        $this->structure = $this->getMockBuilder('Horde_Kolab_Server_Structure_Interface')->getMock();
     }
 
     public function testMethodConstructHasParameterQueryelementTheQueryCriteria()
     {
+        $this->expectNotToPerformAssertions();
+
         $equals = new Horde_Kolab_Server_Query_Element_Equals('equals', 'equals');
         $query = new Horde_Kolab_Server_Query_Ldap($equals, $this->structure);
     }

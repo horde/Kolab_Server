@@ -30,25 +30,28 @@ require_once __DIR__ . '/../../../LdapTestCase.php';
  */
 class Horde_Kolab_Server_Class_Server_Result_LdapTest extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->skipIfNoLdap();
     }
 
     public function testMethodConstructHasParameterNetldap2searchSearchResult()
     {
-        $search = $this->getMock(
-            'Horde_Ldap_Search', array(), array(), '', false
-        );
+        $this->expectNotToPerformAssertions();
+
+        $search = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $result = new Horde_Kolab_Server_Result_Ldap($search);
     }
 
 
     public function testMethodCountHasResultIntTheNumberOfElementsFound()
     {
-        $search = $this->getMock(
-            'Horde_Ldap_Search', array('count'), array(), '', false
-        );
+        $search = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('count'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $search->expects($this->exactly(1))
             ->method('count')
             ->will($this->returnValue(1));
@@ -58,9 +61,10 @@ class Horde_Kolab_Server_Class_Server_Result_LdapTest extends Horde_Kolab_Server
 
     public function testMethodSizelimitexceededHasResultBooleanIndicatingIfTheSearchSizeLimitWasHit()
     {
-        $search = $this->getMock(
-            'Horde_Ldap_Search', array('sizeLimitExceeded'), array(), '', false
-        );
+        $search = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('sizeLimitExceeded'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $search->expects($this->exactly(1))
             ->method('sizeLimitExceeded')
             ->will($this->returnValue(true));
@@ -70,9 +74,10 @@ class Horde_Kolab_Server_Class_Server_Result_LdapTest extends Horde_Kolab_Server
 
     public function testMethodAsarrayHasResultArrayWithTheSearchResults()
     {
-        $search = $this->getMock(
-            'Horde_Ldap_Search', array('asArray'), array(), '', false
-        );
+        $search = $this->getMockBuilder('Horde_Ldap_Search')
+                       ->setMethods(array('asArray'))
+                       ->disableOriginalConstructor()
+                       ->getMock();
         $search->expects($this->exactly(1))
             ->method('asArray')
             ->will($this->returnValue(array('a' => 'a')));

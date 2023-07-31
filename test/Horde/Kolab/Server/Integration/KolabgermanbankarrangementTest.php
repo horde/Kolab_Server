@@ -56,7 +56,7 @@ class Horde_Kolab_Server_Integration_KolabgermanbankarrangementTest extends Hord
      *
      * @return NULL
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

@@ -33,17 +33,19 @@ extends Horde_Kolab_Server_LdapTestCase
 {
     public function testMethodConstructHasParameterNetldap2ReadConnectionAndParameterNetldap2WriteConnection()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->skipIfNoLdap();
-        $ldap_read = $this->getMock('Horde_Ldap');
-        $ldap_write = $this->getMock('Horde_Ldap');
+        $ldap_read = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Splittedldap($ldap_read, $ldap_write);
     }
 
     public function testMethodConstructHasPostconditionThatTheGivenServersWereStored()
     {
         $this->skipIfNoLdap();
-        $ldap_read = $this->getMock('Horde_Ldap');
-        $ldap_write = $this->getMock('Horde_Ldap');
+        $ldap_read = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Splittedldap($ldap_read, $ldap_write);
         $this->assertSame($ldap_read, $conn->getRead());
         $this->assertSame($ldap_write, $conn->getWrite());
@@ -52,8 +54,8 @@ extends Horde_Kolab_Server_LdapTestCase
     public function testMethodGetreadHasResultNetldap2TheHandledConnection()
     {
         $this->skipIfNoLdap();
-        $ldap_read = $this->getMock('Horde_Ldap');
-        $ldap_write = $this->getMock('Horde_Ldap');
+        $ldap_read = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Splittedldap($ldap_read, $ldap_write);
         $this->assertInstanceOf('Horde_Ldap', $conn->getRead());
         $this->assertInstanceOf('Horde_Ldap', $conn->getWrite());
@@ -62,8 +64,8 @@ extends Horde_Kolab_Server_LdapTestCase
     public function testMethodGetwriteHasResultNetldap2TheHandledConnection()
     {
         $this->skipIfNoLdap();
-        $ldap_read = $this->getMock('Horde_Ldap');
-        $ldap_write = $this->getMock('Horde_Ldap');
+        $ldap_read = $this->getMockBuilder('Horde_Ldap')->getMock();
+        $ldap_write = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Splittedldap($ldap_read, $ldap_write);
         $this->assertFalse($conn->getWrite() === $conn->getRead());
     }

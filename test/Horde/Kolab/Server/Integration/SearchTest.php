@@ -31,7 +31,7 @@ require_once __DIR__ . '/../LdapTestCase.php';
 class Horde_Kolab_Server_Integration_SearchTest
 extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
 
 /*         $injector = new Horde_Injector(new Horde_Injector_TopLevel()); */
@@ -41,6 +41,7 @@ extends Horde_Kolab_Server_LdapTestCase
 
     public function testNothing()
     {
+        $this->expectNotToPerformAssertions();
     }
 
     /**

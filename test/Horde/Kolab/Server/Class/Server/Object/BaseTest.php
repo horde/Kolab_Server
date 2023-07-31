@@ -30,18 +30,22 @@ require_once __DIR__ . '/../../../TestCase.php';
  */
 class Horde_Kolab_Server_Class_Server_Object_BaseTest extends Horde_Kolab_Server_TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
     }
 
     public function testMethodConstructHasParameterCompositeWhichIsTheLinkToTheServer()
     {
+        $this->expectNotToPerformAssertions();
+
         $composite = $this->getComposite();
         $object = new Object_Mock($composite, '');
     }
 
     public function testMethodConstructHasParameterStringTheGuidOfTheObject()
     {
+        $this->expectNotToPerformAssertions();
+
         $composite = $this->getComposite();
         $object = new Object_Mock($composite, 'guid');
     }
@@ -207,7 +211,7 @@ class Horde_Kolab_Server_Class_Server_Object_BaseTest extends Horde_Kolab_Server
             ->method('getExternalAttributes')
             ->with($this->isInstanceOf('Horde_Kolab_Server_Object_Interface'))
             ->will($this->returnValue(array('objectClass')));
-        $external = $this->getMock('Horde_Kolab_Server_Object_Attribute_Interface');
+        $external = $this->getMockBuilder('Horde_Kolab_Server_Object_Attribute_Interface')->getMock();
         $external->expects($this->once())
             ->method('value')
             ->will($this->returnValue(array('test')));
@@ -288,7 +292,7 @@ class Horde_Kolab_Server_Class_Server_Object_BaseTest extends Horde_Kolab_Server
                     )
                 )
             );
-        $external = $this->getMock('Horde_Kolab_Server_Object_Attribute_Interface');
+        $external = $this->getMockBuilder('Horde_Kolab_Server_Object_Attribute_Interface')->getMock();
         $external->expects($this->exactly(1))
             ->method('update')
             ->will($this->returnValue(array('objectClass' => array('top'))));

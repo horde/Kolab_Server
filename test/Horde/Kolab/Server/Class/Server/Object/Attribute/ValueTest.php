@@ -24,18 +24,19 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 class Horde_Kolab_Server_Class_Server_Object_Attribute_ValueTest
-extends PHPUnit_Framework_TestCase
+extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->markTestIncomplete('Needs to be fixed');
 
-        $this->object = $this->getMock(
-            'Horde_Kolab_Server_Object_Interface', array(), array(), '', false
-        );
-        $this->composite = $this->getMock(
-            'Horde_Kolab_Server_Composite', array(), array(), '', false
-        );
+        $this->object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')
+                             ->disableOriginalConstructor()
+                             ->getMock();
+
+        $this->composite = $this->getMockBuilder('Horde_Kolab_Server_Composite')
+                                ->disableOriginalConstructor()
+                                ->getMock();
     }
 
     public function testMethodValueHasResultArrayTheValuesOfTheAttribute()

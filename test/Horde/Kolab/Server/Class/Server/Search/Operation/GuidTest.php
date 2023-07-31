@@ -24,15 +24,17 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 class Horde_Kolab_Server_Class_Server_Search_Operation_GuidTest
-extends PHPUnit_Framework_TestCase
+extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $this->structure = $this->getMock('Horde_Kolab_Server_Structure_Interface');
+        $this->structure = $this->getMockBuilder('Horde_Kolab_Server_Structure_Interface')->getMock();
     }
 
     public function testMethodConstructHasParameterStructure()
     {
+        $this->expectNotToPerformAssertions();
+
         $search = new Horde_Kolab_Server_Search_Operation_Guid($this->structure);
     }
 
@@ -50,7 +52,7 @@ extends PHPUnit_Framework_TestCase
 
     public function testMethodSearchguidHasResultArrayTheGuidsOfTheSearchResult()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
         $result->expects($this->once())
             ->method('asArray')
             ->will($this->returnValue(array('a' => 'a')));
@@ -64,13 +66,13 @@ extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($result));
         $search = new Horde_Kolab_Server_Search_Operation_Guid($this->structure);
-        $criteria = $this->getMock('Horde_Kolab_Server_Query_Element_Interface');
+        $criteria = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock();
         $this->assertEquals(array('a'), $search->searchGuid($criteria));
     }
 
     public function testMethodSearchguidHasResultArrayEmptyIfTheSearchReturnedNoResults()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
         $result->expects($this->once())
             ->method('asArray')
             ->will($this->returnValue(array()));
@@ -84,7 +86,7 @@ extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue($result));
         $search = new Horde_Kolab_Server_Search_Operation_Guid($this->structure);
-        $criteria = $this->getMock('Horde_Kolab_Server_Query_Element_Interface');
+        $criteria = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')->getMock();
         $this->assertEquals(array(), $search->searchGuid($criteria));
     }
 }

@@ -58,7 +58,7 @@ class Horde_Kolab_Server_Integration_Kolabpop3accountTest extends Horde_Kolab_Se
      *
      * @return NULL
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

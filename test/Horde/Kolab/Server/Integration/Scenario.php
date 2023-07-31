@@ -23,7 +23,7 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Integration_Scenario extends PHPUnit_Extensions_Story_TestCase
+class Horde_Kolab_Server_Integration_Scenario extends Horde_Test_Case
 {
     /** The mock environment */
     const ENVIRONMENT_MOCK = 'mock';
@@ -1052,7 +1052,7 @@ class Horde_Kolab_Server_Integration_Scenario extends PHPUnit_Extensions_Story_T
      *
      * @return NULL.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->added = array();
         $this->markTestIncomplete('Needs to be fixed');
@@ -1063,7 +1063,7 @@ class Horde_Kolab_Server_Integration_Scenario extends PHPUnit_Extensions_Story_T
      *
      * @return NULL.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if (isset($this->added)) {
             $added = array_reverse($this->added);

@@ -33,15 +33,17 @@ extends Horde_Kolab_Server_LdapTestCase
 {
     public function testMethodConstructHasParameterNetldap2Connection()
     {
+        $this->expectNotToPerformAssertions();
+
         $this->skipIfNoLdap();
-        $ldap = $this->getMock('Horde_Ldap');
+        $ldap = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Simpleldap($ldap);
     }
 
     public function testMethodConstructHasPostconditionThatTheGivenServerWasStored()
     {
         $this->skipIfNoLdap();
-        $ldap = $this->getMock('Horde_Ldap');
+        $ldap = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Simpleldap($ldap);
         $this->assertSame($ldap, $conn->getRead());
     }
@@ -49,7 +51,7 @@ extends Horde_Kolab_Server_LdapTestCase
     public function testMethodGetreadHasResultNetldap2TheHandledConnection()
     {
         $this->skipIfNoLdap();
-        $ldap = $this->getMock('Horde_Ldap');
+        $ldap = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Simpleldap($ldap);
         $this->assertInstanceOf('Horde_Ldap', $conn->getRead());
     }
@@ -57,7 +59,7 @@ extends Horde_Kolab_Server_LdapTestCase
     public function testMethodGetwriteHasResultNetldap2TheHandledConnection()
     {
         $this->skipIfNoLdap();
-        $ldap = $this->getMock('Horde_Ldap');
+        $ldap = $this->getMockBuilder('Horde_Ldap')->getMock();
         $conn = new Horde_Kolab_Server_Connection_Simpleldap($ldap);
         $this->assertSame($conn->getWrite(), $conn->getRead());
     }

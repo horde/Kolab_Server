@@ -31,20 +31,22 @@ require_once __DIR__ . '/../../../../TestCase.php';
 class Horde_Kolab_Server_Class_Server_Object_Attribute_BaseTest
 extends Horde_Kolab_Server_TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $this->attribute = $this->getMock(
-            'Horde_Kolab_Server_Structure_Attribute_Interface'
-        );
+        $this->attribute = $this->getMockBuilder('Horde_Kolab_Server_Structure_Attribute_Interface')->getMock();
     }
 
     public function testMethodConstructHasParameterAttributeTheAdapterCoveringTheInternalSideOfTheAttribute()
     {
+        $this->expectNotToPerformAssertions();
+
         $attribute = new Attribute_Mock($this->attribute, '');
     }
 
     public function testMethodConstructHasParameterStringTheNameOfTheAttribute()
     {
+        $this->expectNotToPerformAssertions();
+
         $attribute = new Attribute_Mock($this->attribute, 'name');
     }
 
@@ -65,6 +67,8 @@ extends Horde_Kolab_Server_TestCase
 
     public function testMethodIsemptyHasParameterArrayDataValues()
     {
+        $this->expectNotToPerformAssertions();
+
         $attribute = new Attribute_Mock($this->attribute, 'name');
         $attribute->isEmpty(array());
     }

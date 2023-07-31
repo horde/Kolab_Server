@@ -36,7 +36,7 @@ class Horde_Kolab_Server_Integration_GroupTest extends Horde_Kolab_Server_Integr
      *
      * @return NULL
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

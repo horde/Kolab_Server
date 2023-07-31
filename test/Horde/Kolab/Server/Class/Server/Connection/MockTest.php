@@ -24,43 +24,45 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 class Horde_Kolab_Server_Class_Server_Connection_MockTest
-extends PHPUnit_Framework_TestCase
+extends Horde_Test_Case
 {
     public function testMethodConstructHasParameterMockldapConnection()
     {
-        $ldap = $this->getMock(
-            'Horde_Kolab_Server_Connection_Mock_Ldap',
-            array(), array(), '', false, false
-        );
+        $this->expectNotToPerformAssertions();
+
+        $ldap = $this->getMockBuilder('Horde_Kolab_Server_Connection_Mock_Ldap')
+                     ->disableOriginalConstructor()
+                     ->disableOriginalClone()
+                     ->getMock();
         $conn = new Horde_Kolab_Server_Connection_Mock($ldap);
     }
 
     public function testMethodConstructHasPostconditionThatTheGivenServerWasStored()
     {
-        $ldap = $this->getMock(
-            'Horde_Kolab_Server_Connection_Mock_Ldap',
-            array(), array(), '', false, false
-        );
+        $ldap = $this->getMockBuilder('Horde_Kolab_Server_Connection_Mock_Ldap')
+                     ->disableOriginalConstructor()
+                     ->disableOriginalClone()
+                     ->getMock();
         $conn = new Horde_Kolab_Server_Connection_Mock($ldap);
         $this->assertSame($ldap, $conn->getRead());
     }
 
     public function testMethodGetreadHasResultMockldapTheHandledConnection()
     {
-        $ldap = $this->getMock(
-            'Horde_Kolab_Server_Connection_Mock_Ldap',
-            array(), array(), '', false, false
-        );
+        $ldap = $this->getMockBuilder('Horde_Kolab_Server_Connection_Mock_Ldap')
+                     ->disableOriginalConstructor()
+                     ->disableOriginalClone()
+                     ->getMock();
         $conn = new Horde_Kolab_Server_Connection_Mock($ldap);
         $this->assertInstanceOf('Horde_Kolab_Server_Connection_Mock_Ldap', $conn->getRead());
     }
 
     public function testMethodGetwriteHasResultMockldapTheHandledConnection()
     {
-        $ldap = $this->getMock(
-            'Horde_Kolab_Server_Connection_Mock_Ldap',
-            array(), array(), '', false, false
-        );
+        $ldap = $this->getMockBuilder('Horde_Kolab_Server_Connection_Mock_Ldap')
+                     ->disableOriginalConstructor()
+                     ->disableOriginalClone()
+                     ->getMock();
         $conn = new Horde_Kolab_Server_Connection_Mock($ldap);
         $this->assertSame($conn->getWrite(), $conn->getRead());
     }

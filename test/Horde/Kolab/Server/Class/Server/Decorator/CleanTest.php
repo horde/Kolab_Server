@@ -23,13 +23,13 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framework_TestCase
+class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->server = $this->getMock('Horde_Kolab_Server_Interface');
+        $this->server = $this->getMockBuilder('Horde_Kolab_Server_Interface')->getMock();
         $this->cleaner = new Horde_Kolab_Server_Decorator_Clean($this->server);
     }
 
@@ -79,10 +79,11 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodFindHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
-        $query = $this->getMock(
-            'Horde_Kolab_Server_Query_Element_Interface', array(), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')
+                      ->disableOriginalConstructor()
+                      ->disableOriginalClone()
+                      ->getMock();
         $this->server->expects($this->exactly(1))
             ->method('find')
             ->with($query)
@@ -95,10 +96,11 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodFindbelowHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
-        $query = $this->getMock(
-            'Horde_Kolab_Server_Query_Element_Interface', array(), array(), '', false
-        );
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
+        $query = $this->getMockBuilder('Horde_Kolab_Server_Query_Element_Interface')
+                      ->disableOriginalConstructor()
+                      ->disableOriginalClone()
+                      ->getMock();
         $this->server->expects($this->exactly(1))
             ->method('findBelow')
             ->with($query, 'none')
@@ -111,7 +113,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodSaveHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->server->expects($this->exactly(1))
             ->method('save')
             ->with($object, array('a' => 'a'));
@@ -120,7 +122,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodAddHasPostconditionThatTheCallWasDelegatedToTheServer()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $this->server->expects($this->exactly(1))
             ->method('add')
             ->with($object, array('a' => 'a'));
@@ -160,7 +162,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodAddHasPostconditionThatTheGuidOfTheAddedObjectIsRememberedAndDeletedOnDestruction()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $object->expects($this->exactly(1))
             ->method('getGuid')
             ->will($this->returnValue('a'));
@@ -176,7 +178,7 @@ class Horde_Kolab_Server_Class_Server_Decorator_CleanTest extends PHPUnit_Framew
 
     public function testMethodAddHasPostconditionThatTheGuidOfTheAddedObjectIsNotDeletedOnDestructionIfItWasDeletedBefore()
     {
-        $object = $this->getMock('Horde_Kolab_Server_Object_Interface');
+        $object = $this->getMockBuilder('Horde_Kolab_Server_Object_Interface')->getMock();
         $object->expects($this->exactly(1))
             ->method('getGuid')
             ->will($this->returnValue('a'));

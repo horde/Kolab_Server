@@ -30,22 +30,22 @@ require_once __DIR__ . '/../../../LdapTestCase.php';
  */
 class Horde_Kolab_Server_Class_Server_Structure_LdapTest extends Horde_Kolab_Server_LdapTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
-        $server = $this->getMock('Horde_Kolab_Server_Interface');
+        $server = $this->getMockBuilder('Horde_Kolab_Server_Interface')->getMock();
         $this->composite = new Horde_Kolab_Server_Composite(
             $server,
-            $this->getMock('Horde_Kolab_Server_Objects_Interface'),
+            $this->getMockBuilder('Horde_Kolab_Server_Objects_Interface')->getMock(),
             new Horde_Kolab_Server_Structure_Ldap(),
-            $this->getMock('Horde_Kolab_Server_Search_Interface'),
-            $this->getMock('Horde_Kolab_Server_Schema_Interface')
+            $this->getMockBuilder('Horde_Kolab_Server_Search_Interface')->getMock(),
+            $this->getMockBuilder('Horde_Kolab_Server_Schema_Interface')->getMock()
         );
     }
 
     public function testMethodFindHasResultServerResultTheSearchResult()
     {
         $this->skipIfNoLdap();
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
         $this->composite->server->expects($this->exactly(1))
             ->method('find')
             ->with('(objectClass=equals)', array())
@@ -60,7 +60,7 @@ class Horde_Kolab_Server_Class_Server_Structure_LdapTest extends Horde_Kolab_Ser
     public function testMethodFindBelowHasResultServerResultTheSearchResult()
     {
         $this->skipIfNoLdap();
-        $result = $this->getMock('Horde_Kolab_Server_Result_Interface');
+        $result = $this->getMockBuilder('Horde_Kolab_Server_Result_Interface')->getMock();
         $this->composite->server->expects($this->exactly(1))
             ->method('findBelow')
             ->with('(objectClass=equals)', 'base', array())
